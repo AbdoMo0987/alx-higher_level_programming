@@ -1,51 +1,23 @@
 #!/usr/bin/python3
-def add(a, b):
-    """My addition function
-
-    Args:
-        a: first integer
-        b: second integer
-
-    Returns:
-        The return value. a + b
-    """
-    return (a + b)
+from sys import argv, exit
+from calculator_1 import add, sub, mul, div
 
 
-def sub(a, b):
-    """My subtraction function
-
-    Args:
-        a: first integer
-        b: second integer
-
-    Returns:
-        The return value. a - b
-    """
-    return (a - b)
-
-
-def mul(a, b):
-    """My multiplication function
-
-    Args:
-        a: first integer
-        b: second integer
-
-    Returns:
-        The return value. a * b
-    """
-    return (a * b)
-
-
-def div(a, b):
-    """My division function
-
-    Args:
-        a: first integer
-        b: second integer
-
-    Returns:
-        The return value. a / b
-    """
-    return int(a / b)
+if __name__ == "__main__":
+    arglen = len(argv) - 1
+    if arglen == 0:
+        print('Usage: ./100-my_calculator.py <a> <operator> <b>')
+        exit(1)
+    op = argv[2]
+    a, b = int(argv[1]), int(argv[3])
+    if op == "+":
+        print('{} + {} = {}'.format(a, b, add(a, b)))
+    elif op == "-":
+        print('{} - {} = {}'.format(a, b, sub(a, b)))
+    elif op == "*":
+        print('{} * {} = {}'.format(a, b, mul(a, b)))
+    elif op == "/":
+        print('{} / {} = {}'.format(a, b, div(a, b)))
+    else:
+        print('Unknown operator. Available operators: +, -, * and /')
+        exit(1)
